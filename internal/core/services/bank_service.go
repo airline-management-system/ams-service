@@ -2,22 +2,17 @@ package services
 
 import (
 	"ams-service/internal/core/entities"
+	"ams-service/internal/ports/primary"
+	"ams-service/internal/ports/secondary"
 
 	"github.com/rs/zerolog/log"
 )
 
-type BankRepository interface {
-	AddCreditCard(card entities.CreditCard) error
-	GetAllCreditCards() ([]entities.CreditCard, error)
-	Pay(request entities.PaymentRequest) error
-	Refund(request entities.RefundRequest) error
-}
-
 type BankService struct {
-	repo BankRepository
+	repo secondary.BankRepository
 }
 
-func NewBankService(repo BankRepository) *BankService {
+func NewBankService(repo secondary.BankRepository) primary.BankService {
 	return &BankService{repo: repo}
 }
 
