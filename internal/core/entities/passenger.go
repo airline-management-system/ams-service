@@ -8,7 +8,7 @@ type Passenger struct {
 	NationalId       string    `json:"national_id" gorm:"size:11;not null"`
 	PnrNo            string    `json:"pnr_no" gorm:"size:6;unique;not null"`
 	FlightId         int       `json:"flight_id" gorm:"not null;foreignKey:id;references:flights;constraint:OnDelete:RESTRICT"`
-	PaymentId        int       `json:"payment_id" gorm:"not null;foreignKey:id;references:payments;constraint:OnDelete:RESTRICT"`
+	TransactionId    int       `json:"transaction_id" gorm:"not null;foreignKey:id;references:transactions;constraint:OnDelete:RESTRICT"`
 	BaggageAllowance int       `json:"baggage_allowance" gorm:"not null"`
 	ExtraBaggage     int       `json:"extra_baggage" gorm:"not null"`
 	FareType         string    `json:"fare_type" gorm:"size:50;not null"`
